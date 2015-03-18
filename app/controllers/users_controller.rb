@@ -10,10 +10,43 @@ class UsersController < ApplicationController
      		redirect_to root_path, notice: 'Thanks for signing up!'
      	else
      		render 'new'
-   	 	end
-		
+   	 	end		
 	end
+
+	def edit
+		 @user = User.find(params[:id])
+	end
+
+	def delete
+		 @user = User.find(params[:id])
+	end
+
+	def update
+    	@user = User.find(params[:id])
+
+    	if @user.update_attributes(user_params)
+      		redirect_to root_path
+    	else
+      		render :edit
+    	end
+  	end
+
+  	def destroy
+    	@user = User.find(params[:id])
+    
+    	if @users.nil?
+      		if @user.delete
+       			redirect_to root_path
+      		else
+      			render 'index'
+      		end
+    	else
+    		redirect_to root_path, notice: 'User doesnt exist'
+    	end  
+  	end
+
 end
+
 
 private
 
