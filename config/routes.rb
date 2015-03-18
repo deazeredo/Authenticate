@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+  resources :users
+  resources :pages
+  resources :sessions
+
+  delete 'sign_out' => 'sessions#destroy'
 
   root "pages#index"
   # The priority is based upon order of creation: first created -> highest priority.
