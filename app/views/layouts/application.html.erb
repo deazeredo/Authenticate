@@ -15,7 +15,7 @@
   <% user = current_user %>
   <h3>Hello, <%=user.name %> </h3>
 
-  <% if user.admin %>
+  <% if user.admin? %>
    <%= link_to 'See Users', 'users'%>
 
   <% end %>
